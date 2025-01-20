@@ -4,7 +4,14 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'sm': '320px',
+      },
+      fontFamily :{ 
+        kohstante_reg: ["kohstante-reg","sans-serif"], 
+      }
+    },
   },
   plugins: [],
 }
