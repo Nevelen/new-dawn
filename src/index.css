@@ -18,3 +18,12 @@ body {
   src: url('./assets/fonts/Koh_Santepheap/KohSantepheap-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'trirong_reg';
+  src: url('./assets/fonts/Trirong/Trirong-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'trirong_bold';
+  src: url('./assets/fonts/Trirong/Trirong-Bold.ttf') format('truetype');
+}

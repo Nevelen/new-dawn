@@ -10,6 +10,8 @@ module.exports = {
       },
       fontFamily :{ 
         kohstante_reg: ["kohstante-reg","sans-serif"], 
+        trirong_reg: ["trirong_reg","sans-serif"], 
+        trirong_bold: ["trirong_bold","sans-serif"], 
       }
     },
   },
