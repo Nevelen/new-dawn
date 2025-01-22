@@ -6,16 +6,12 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f9fafb;
 }
 
 
 .bg-cover {
   background-image: url('https://static.wixstatic.com/media/29cc911599d44d2b80a1f9177af7302f.jpg/v1/fill/w_1920,h_426,al_c,q_85,enc_avif,quality_auto/29cc911599d44d2b80a1f9177af7302f.jpg');
-}
-
-@font-face {
-  font-family: 'kohstante-reg';
-  src: url('./assets/fonts/Koh_Santepheap/KohSantepheap-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -26,4 +22,9 @@ body {
 @font-face {
   font-family: 'trirong_bold';
   src: url('./assets/fonts/Trirong/Trirong-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'trirong_light';
+  src: url('./assets/fonts/Trirong/Trirong-Light.ttf') format('truetype');
 }
