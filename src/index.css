@@ -6,6 +6,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f9fafb;
 }
 
 
@@ -14,7 +15,16 @@ body {
 }
 
 @font-face {
-  font-family: 'kohstante-reg';
-  src: url('./assets/fonts/Koh_Santepheap/KohSantepheap-Regular.ttf') format('truetype');
+  font-family: 'trirong_reg';
+  src: url('./assets/fonts/Trirong/Trirong-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'trirong_bold';
+  src: url('./assets/fonts/Trirong/Trirong-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'trirong_light';
+  src: url('./assets/fonts/Trirong/Trirong-Light.ttf') format('truetype');
+}
