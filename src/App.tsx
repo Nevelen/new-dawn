@@ -46,7 +46,7 @@ const areas_of_support = [
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
-  const mobileNavRef = useRef(null);
+  const mobileNavRef = useRef<any>(null);
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -62,8 +62,10 @@ function App() {
     // Cleanup listener on component unmount
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
-  const handleNavigation = (url) => {
-    const element = document.querySelector(url);
+  const handleNavigation = (url: string): void => {
+    // Get the element corresponding to the provided URL selector
+    const element = document.querySelector<HTMLElement>(url);
+
     if (element) {
       // Check if it's mobile and whether the navigation menu is open
       const mobileNavHeight = (mobileNavRef.current && isMobile) ? mobileNavRef.current.offsetHeight : 0;

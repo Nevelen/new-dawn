@@ -1,47 +1,66 @@
-import { useRef, useState } from "react";
+import {ChangeEvent, FormEvent, useRef, useState} from "react";
 import { Turnstile } from "@marsidev/react-turnstile";
+import axios from "axios";
+interface FormData {
+  /** The text to display inside the button */
+  firstname: string;
+  lastname: string;
+  email: string;
+  enquiry: string;
+  token: string;
+}
+
+interface Errors {
+  firstname?: string;
+  lastname?: string;
+  email?: string;
+  enquiry?: string;
+  token?: string;
+}
 
 const Contact = () => {
 
-  const ref = useRef()
-
+  const turnstileRef = useRef<any>(null);
   const apiUrl = process.env.REACT_APP_API_URL;
-  const [statusMessage, setStatusMessage] = useState(""); // To store the success or error message
-  const [isSuccess, setIsSuccess] = useState(false); // To track the success state
-  let [token, setToken] = useState()
-  const [formData, setFormData] = useState({
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const [formData, setFormData] = useState<FormData>({
     firstname: "",
     lastname: "",
     email: "",
     enquiry: "",
+    token: "",
   });
 
-  const [errors, setErrors] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    enquiry: "",
-    token: ""
-  });
+  const [errors, setErrors] = useState<Errors>({});
 
-  const handleChange = (e) => {
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
-    // Update the specific field (email, message, or any other field) in formData
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value, // Dynamically update the field based on name attribute
     }));
   };
 
-  const validateForm = () => {
-    const newErrors = { firstname: "", lastname: "", email: "" };
+  const handleTokenSuccess = (receivedToken: string) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      token: receivedToken, // Update the token in the form data
+    }));
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Errors = {};
     let isValid = true;
-    if (!token) {
-      newErrors.token = "This is required to be verified";
+
+    if (!formData.token) {
+      newErrors.token = "Verification is required";
       isValid = false;
     }
-    // Validate Name
     if (!formData.firstname) {
       newErrors.firstname = "First Name is required";
       isValid = false;
@@ -53,13 +72,11 @@ const Contact = () => {
     if (!formData.enquiry) {
       newErrors.enquiry = "Enquiry is required";
       isValid = false;
-    }
-    if (formData.enquiry.length < 10) {
+    } else if (formData.enquiry.length < 10) {
       newErrors.enquiry = "The enquiry must be at least 10 characters long.";
       isValid = false;
     }
 
-    // Validate Email
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!formData.email) {
       newErrors.email = "Email is required";
@@ -73,47 +90,40 @@ const Contact = () => {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (validateForm()) {
-      formData.token = token;
+      setLoading(true);
+
       console.log("Form submitted successfully:", formData);
       try {
-        fetch(
-          `${apiUrl}/clients/new_dawn/contact`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          }
+        axios.post(
+          `${apiUrl}/clients/new_dawn/contact`, formData
         ).then(async response => {
-          if (response.status === 429) {
-            // Handle rate limiting
-            const errorText = await response.text();
-            throw new Error(`Rate limit exceeded. Details: ${errorText}`);
-          }
-
-          if (response.ok) {
+          if (response.status === 200) {
             setIsSuccess(true);
             setStatusMessage("Email sent successfully!");
-            setFormData({ firstname: "", lastname: "", email: "", enquiry: "" }); // Clear the form
-              ref.current?.reset()
-            token = null;
+            setFormData({
+              firstname: "",
+              lastname: "",
+              email: "",
+              enquiry: "",
+              token: "",
+            });
+              turnstileRef.current?.reset()
             setTimeout(() => {
               setStatusMessage("");
               setIsSuccess(false);
             }, 5000);
           }
         })
-          .then(data => {
-            console.log(data)
-          })
           .catch(error => {
             console.error('Error:', error);
-          });
+          })
+        .finally(() => {
+          setLoading(false);
+        })
 
       }
       finally {
@@ -153,25 +163,42 @@ const Contact = () => {
             </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm text-black font-trirong_light">Please tell me a little bit about your enquiry</label>
-              <textarea type="text" id="email" value={formData.enquiry} pattern=".*" name="enquiry"
-                onChange={handleChange} rows="4"
+              <textarea  value={formData.enquiry} name="enquiry"
+                onChange={handleChange} rows={4}
                 className="p-1.5 w-full border border-black font-trirong_reg resize-none" />
               {errors.enquiry && <span className="text-red-500 text-sm font-trirong_light">{errors.enquiry}</span>}
             </div>
             <div>
-              <Turnstile ref={ref} siteKey="0x4AAAAAAA59u5SDqngiNfFs"
-                onSuccess={setToken}
-                options={{
+              <Turnstile ref={turnstileRef} siteKey="0x4AAAAAAA59u5SDqngiNfFs"
+                 onSuccess={handleTokenSuccess}
+                 options={{
                   theme: 'light',
                 }}
               />{" "}
               {errors.token && <span className="text-red-500 text-sm font-trirong_light">{errors.token}</span>}
             </div>
             <div className="flex justify-center items-center mt-4">
-              <button className='py-2 px-8 bg-[#9db39f] text-center w-1/2 font-trirong_reg'>Submit</button>
+              <button className='py-2 px-8 bg-[#9db39f] text-center w-1/2 font-trirong_reg'>
+                {isLoading ? (
+                    <div className='flex items-center justify-center opacity-70'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                              d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Z"
+                              opacity="0.5"/>
+                        <path fill="currentColor" d="M20 12h2A10 10 0 0 0 12 2V4A8 8 0 0 1 20 12Z">
+                          <animateTransform attributeName="transform" dur="1s" from="0 12 12" repeatCount="indefinite"
+                                            to="360 12 12" type="rotate"/>
+                        </path>
+                      </svg>
+                    </div>
+                ) : (
+                    <p>Submit</p>
+                )
+                }
+              </button>
             </div>
             {statusMessage && (
-              <p className="font-trirong_light" style={{ color: isSuccess ? "green" : "red" }}>{statusMessage}</p>
+                <p className="font-trirong_light" style={{color: isSuccess ? "green" : "red"}}>{statusMessage}</p>
             )}
           </div>
 
