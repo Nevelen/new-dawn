@@ -205,7 +205,7 @@ function App() {
         <div className='text-center space-y-6 max-w-4xl'>
           <h1 className='text-3xl text-center  font-trirong_reg'>About me...</h1>
           <div className='flex md:flex-row sm:flex-col sm:justify-center sm:items-center'>
-            <img className='w-1/2' src='https://static.wixstatic.com/media/2e60ad_df1e086947284c3d9124c73f13f41c6a~mv2.jpg/v1/fill/w_848,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_6960_JPG.jpg' alt="about-me"></img>
+            <img className='w-1/2' src='https://fsn1.your-objectstorage.com/nev/new-dawn/jane.jpg' alt="about-me"></img>
             <div className='md:w-1/2 p-4 space-y-4  font-trirong_light'>
               <p>I have always had an interest in human health in a general sense, and an appetite for anything of a psychological nature.  Since qualifying with Middlesex University, I have gained my experience working for charities specialising in trauma and abuse.  I have also undertaken research into burnout and overwhelm.  I have a particular interest in relationship challenges, and have extensive experience around attachment therapy, abusive or otherwise.
               </p>
@@ -245,18 +245,18 @@ function App() {
           </div>
           <div className='flex w-full md:flex-row sm:flex-col space-x-0 md:space-x-8 space-y-8 md:space-y-0'>
             <div className='basis-1/3 space-y-4 flex flex-col items-center'>
-              <img className='w-32 h-32 rounded-full' src='https://static.wixstatic.com/media/nsplsh_ff6405ea500e44af91b5a26a495c51c9~mv2.jpg/v1/crop/x_912,y_0,w_3648,h_3648/fill/w_242,h_242,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Arnaud%20Mesureur.jpg' alt='forest-tree'></img>
+              <img className='w-32 h-32 rounded-full' src='https://fsn1.your-objectstorage.com/nev/new-dawn/Image-by-Arnaud-Mesureu.jpg' alt='forest-tree'></img>
               <h1 className='text-2xl text-center font-trirong_reg'>Consultation</h1>
               <p className='text-sm font-trirong_light'>We will have a chat over the phone initially.  This will take about 20 minutes and will help you to decide if I am the right fit for you. There is no charge for this.</p>
             </div>
             <div className='basis-1/3 space-y-4 flex flex-col items-center'>
-              <img className='w-32 h-32 rounded-full' src='https://static.wixstatic.com/media/29cc911599d44d2b80a1f9177af7302f.jpg/v1/crop/x_318,y_0,w_1285,h_1285/fill/w_242,h_242,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Forest%20Trees.jpg' alt='forest-tree'></img>
+              <img className='w-32 h-32 rounded-full' src='https://fsn1.your-objectstorage.com/nev/new-dawn/Forest-Tree.jpg' alt='forest-tree'></img>
               <h1 className='text-2xl text-center font-trirong_reg'>Individual counselling</h1>
               <p className='text-sm font-trirong_light'>Sessions will then take place, face-to-face, on a weekly basis initially. You might then choose to progress to fortnightly or monthly sessions, at a later date. Each session is 50 minutes long, at a cost of £50.</p>
               <p className='text-sm font-trirong_light'>I can offer single-session counselling for £60 for 60 minutes.</p>
             </div>
             <div className='basis-1/3 space-y-4  flex flex-col items-center'>
-              <img className='w-32 h-32 rounded-full' src='https://static.wixstatic.com/media/11062b_02b5fed7a53c430fb3d5c1c233690a86~mv2.jpg/v1/crop/x_704,y_0,w_2584,h_2584/fill/w_242,h_242,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Trees.jpg' alt='forest-tree'></img>
+              <img className='w-32 h-32 rounded-full' src='https://fsn1.your-objectstorage.com/nev/new-dawn/Trees.jpg' alt='forest-tree'></img>
               <h1 className='text-2xl text-center font-trirong_reg'>Couples counselling</h1>
               <p className='text-sm font-trirong_light'>Couples counselling will also take place on a weekly basis, at a cost of £60 for 60 minutes. This will need to take place in Southampton.</p>
             </div>
@@ -269,7 +269,7 @@ function App() {
           <div className="text-center space-y-4 max-w-6xl">
             <h1 className='text-3xl font-trirong_reg'>I can help with...</h1>
             <div className='flex sm:flex-col space-y-8 lg:flex-row'>
-              <img className='w-[500px]' src='https://static.wixstatic.com/media/2e60ad_38b3ce9f40574ab68070770a0178769c~mv2.jpg/v1/fill/w_692,h_586,al_c,lg_1,q_85,enc_avif,quality_auto/bcad7d3a-f0a3-4977-bf18-720dcf4a73f6%202.jpg' alt='help'></img>
+              <img className='w-[500px]' src='https://fsn1.your-objectstorage.com/nev/new-dawn/bcad7d3a-f0a3-4977-bf18-720dcf4a73f6.jpg' alt='help'></img>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
                 {areas_of_support.map((item) => (
                   <p className='text-left font-trirong_light'
