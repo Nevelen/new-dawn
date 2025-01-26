@@ -11,7 +11,7 @@ body {
 
 
 .bg-cover {
-  background-image: url('https://fsn1.your-objectstorage.com/nev/new-dawn/29cc911599d44d2b80a1f9177af7302f.jpg');
+  background-image: url('https://nev-web.s3.eu-west-2.amazonaws.com/new_dawn/29cc911599d44d2b80a1f9177af7302f.jpg');
 }
 
 @font-face {
