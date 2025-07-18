@@ -191,7 +191,7 @@ function App() {
         <div className="text-center space-y-6 max-w-4xl">
           <h1 className="text-3xl md:text-4xl  font-trirong_reg">Welcome...</h1>
           <p className="text-sm leading-relaxed font-trirong_light">
-            Welcome to New Dawn Counselling, my name is Jane. I am a humanistic therapist, which means that emphasis is given to the development of self-awareness and personal growth. Whether you are having trouble with general life problems, loneliness, or trauma, I can offer adaptive, person-centred counselling to explore the best way forward for you.
+            Welcome to New Dawn Counselling, my name is Jane. I am a humanistic therapist, which means that emphasis is given to the development of self-awareness and personal growth. Whether you are having trouble with general life problems, ADHD, GAD, trauma or abuse, I can offer adaptive, person-centred counselling to explore the best way forward for you.
           </p>
           <p className="text-sm leading-relaxed font-trirong_light">
             We can look at managing the symptoms of depression, anxiety, or overwhelm, whilst unpacking the thoughts and emotions that could be driving these reactions. You might choose to attend to family conflict or relationship difficulties, perhaps looking at past experiences. My job is to reflect different ways of looking at things, affecting a fresh outlook and change.
@@ -237,7 +237,7 @@ function App() {
         <div className='text-center space-y-6 max-w-4xl'>
           <h1 className='text-3xl text-center  font-trirong_reg'>My services...</h1>
           <div className='text-center'>
-            <p className='text-sm font-trirong_light'>I am able to work from central Southampton, Dibden or Lymington, depending on availability.</p>
+            <p className='text-sm font-trirong_light'>I am able to work from central Southampton, Hythe or Lymington, depending on availability.</p>
             <p className='text-sm font-trirong_light'>Monday - Friday</p>
 
             <p className='text-sm font-trirong_light'>Saturday mornings</p>
@@ -253,24 +253,24 @@ function App() {
               <img className='w-32 h-32 rounded-full' src='https://nev-web.s3.eu-west-2.amazonaws.com/new_dawn/Forest-Trees.jpg' alt='forest-tree'></img>
               <h1 className='text-2xl text-center font-trirong_reg'>Individual counselling</h1>
               <p className='text-sm font-trirong_light'>Sessions will then take place, face-to-face, on a weekly basis initially. You might then choose to progress to fortnightly or monthly sessions, at a later date. Each session is 50 minutes long, at a cost of £50.</p>
-              <p className='text-sm font-trirong_light'>I can offer single-session counselling for £60 for 60 minutes.</p>
+              <p className='text-sm font-trirong_light'>I can offer single-session counselling for £70 for 60 minutes.</p>
             </div>
             <div className='basis-1/3 space-y-4  flex flex-col items-center'>
               <img className='w-32 h-32 rounded-full' src='https://nev-web.s3.eu-west-2.amazonaws.com/new_dawn/Trees.jpg' alt='forest-tree'></img>
               <h1 className='text-2xl text-center font-trirong_reg'>Couples counselling</h1>
-              <p className='text-sm font-trirong_light'>Couples counselling will also take place on a weekly basis, at a cost of £60 for 60 minutes. This will need to take place in Southampton.</p>
+              <p className='text-sm font-trirong_light'>Couples counselling will also take place on a weekly basis, at a cost of £70 for 60 minutes.</p>
             </div>
           </div>
         </div>
 
       </div>
       <div id="help" className="flex flex-col items-center h-auto bg-[#f5f9e5] p-6 md:p-10 justify-center">
-        <div className="w-full max-w-[100rem] flex justify-center bg-[#ededed] p-6 rounded-lg">
+        <div className="w-full max-w-[100rem] flex justify-center bg-[#ededed] p-4 md:p-6 rounded-lg">
           <div className="text-center space-y-4 max-w-6xl">
             <h1 className='text-3xl font-trirong_reg'>I can help with...</h1>
-            <div className='flex sm:flex-col space-y-8 lg:flex-row'>
+            <div className='flex sm:flex-col space-y-8 lg:flex-row gap-4'>
               <img className='w-[500px]' src='https://nev-web.s3.eu-west-2.amazonaws.com/new_dawn/bcad7d3a-f0a3-4977-bf18-720dcf4a73f6+2.jpg' alt='help'></img>
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+              <div className='grid sm:text-xs md:text-base grid-cols-2 gap-2'>
                 {areas_of_support.map((item) => (
                   <p className='text-left font-trirong_light'
                     key={item}>
