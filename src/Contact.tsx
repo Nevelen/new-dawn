@@ -6,6 +6,7 @@ interface FormData {
   firstname: string;
   lastname: string;
   email: string;
+  phone: string;
   enquiry: string;
   token: string;
 }
@@ -14,6 +15,7 @@ interface Errors {
   firstname?: string;
   lastname?: string;
   email?: string;
+  phone?: string;
   enquiry?: string;
   token?: string;
 }
@@ -22,6 +24,8 @@ const Contact = () => {
 
   const turnstileRef = useRef<any>(null);
   const apiUrl = process.env.REACT_APP_API_URL;
+  const sender = process.env.REACT_APP_SENDER;
+  const recipient = process.env.REACT_APP_RECIPIENT;
   const [statusMessage, setStatusMessage] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -30,6 +34,7 @@ const Contact = () => {
     firstname: "",
     lastname: "",
     email: "",
+    phone: "",
     enquiry: "",
     token: "",
   });
@@ -99,7 +104,16 @@ const Contact = () => {
       console.log("Form submitted successfully:", formData);
       try {
         axios.post(
-          `${apiUrl}/clients/new_dawn/contact`, formData
+          `${apiUrl}`, {
+            origin: "newdawncounselling.uk",
+            sender: sender,
+            recipient: recipient,
+            "cf-turnstile-response": formData.token,
+            name: `${formData.firstname} ${formData.lastname}`,
+            email: formData.email,
+            mobile: formData.phone,
+            message: formData.enquiry,
+          }
         ).then(async response => {
           if (response.status === 200) {
             setIsSuccess(true);
@@ -108,6 +122,7 @@ const Contact = () => {
               firstname: "",
               lastname: "",
               email: "",
+              phone: "",
               enquiry: "",
               token: "",
             });
@@ -136,6 +151,7 @@ const Contact = () => {
       <div className='text-center space-y-6 max-w-4xl md:w-full'>
         <h1 className='text-3xl font-trirong_reg'>Please do get in touch...</h1>
         <p className='text-left text-sm font-trirong_light'>I will get back to you as soon as possible.</p>
+        <p className='text-left text-sm font-trirong_light'>Please give me your telephone number or be sure to check your spam for my reply.</p>
         <form onSubmit={handleSubmit} className='text-left '>
           <div className="mb-5 space-y-4">
             <div className="flex gap-4">
@@ -162,14 +178,20 @@ const Contact = () => {
               {errors.email && <span className="text-red-500 text-sm font-trirong_light">{errors.email}</span>}
             </div>
             <div>
-              <label htmlFor="email" className="block mb-2 text-sm text-black font-trirong_light">Please tell me a little bit about your enquiry</label>
+              <label htmlFor="phone" className="block mb-2 text-sm text-black font-trirong_light">Telephone Number (optional)</label>
+              <input type="tel" id="phone" value={formData.phone} name="phone"
+                onChange={handleChange}
+                className="p-1.5 w-full border border-black font-trirong_reg" />
+            </div>
+            <div>
+              <label htmlFor="enquiry" className="block mb-2 text-sm text-black font-trirong_light">Please tell me a little bit about your enquiry</label>
               <textarea  value={formData.enquiry} name="enquiry"
                 onChange={handleChange} rows={4}
                 className="p-1.5 w-full border border-black font-trirong_reg resize-none" />
               {errors.enquiry && <span className="text-red-500 text-sm font-trirong_light">{errors.enquiry}</span>}
             </div>
             <div>
-              <Turnstile ref={turnstileRef} siteKey="0x4AAAAAAA59u5SDqngiNfFs"
+              <Turnstile ref={turnstileRef} siteKey={process.env.REACT_APP_TURNSTILE_SITE_KEY || ""}
                  onSuccess={handleTokenSuccess}
                  options={{
                   theme: 'light',

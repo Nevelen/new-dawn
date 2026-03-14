@@ -32,3 +32,24 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy build --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }}
+
+      - name: Get version from package-lock.json
+        id: version
+        run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Check if release exists
+        id: check_release
+        run: |
+          if gh release view ${{ steps.version.outputs.version }} > /dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release
+        if: steps.check_release.outputs.exists == 'false'
+        run: gh release create ${{ steps.version.outputs.version }} --generate-notes --title "${{ steps.version.outputs.version }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

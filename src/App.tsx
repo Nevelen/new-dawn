@@ -302,24 +302,9 @@ function App() {
           </h1>
           <div className="text-center">
             <p className="text-sm sm:text-base font-trirong_light text-center">
-              I am able to work from central Southampton, Hythe or&nbsp;
-              <span className="inline-flex items-center h-12 whitespace-nowrap align-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-14 h-14 mx-1 shrink-0 opacity-80"
-                  viewBox="0 0 512 117"
-                >
-                  <path
-                    fill="#0b5cff"
-                    d="M107.472 114.706H16.348c-5.968 0-11.791-3.203-14.557-8.589C-1.41 99.858-.247 92.434 4.702 87.63L68.17 24.164H22.607C10.088 24.164.044 13.974.044 1.6h83.992c5.968 0 11.79 3.203 14.556 8.589c3.203 6.259 2.038 13.683-2.911 18.486L32.214 92.143h52.55c12.518 0 22.708 10.19 22.708 22.563M468.183 0c-13.1 0-24.746 5.677-32.898 14.702C427.134 5.677 415.488 0 402.388 0c-24.164 0-43.961 20.67-43.961 44.834v69.872c12.518 0 22.562-10.19 22.562-22.563V44.689c0-11.646 9.025-21.544 20.67-21.98c12.228-.437 22.272 9.315 22.272 21.397v48.037c0 12.519 10.19 22.563 22.563 22.563V44.543c0-11.645 9.025-21.544 20.67-21.98c12.228-.437 22.272 9.316 22.272 21.398v48.036c0 12.52 10.19 22.563 22.563 22.563V44.69C512.144 20.67 492.347 0 468.183 0M221.595 58.226c0 32.17-26.056 58.226-58.226 58.226s-58.226-26.056-58.226-58.226S131.199 0 163.369 0s58.226 26.056 58.226 58.226m-22.563 0c0-19.651-16.012-35.663-35.663-35.663s-35.664 16.012-35.664 35.663c0 19.652 16.013 35.664 35.664 35.664s35.663-16.012 35.663-35.664m148.04 0c0 32.17-26.056 58.226-58.226 58.226S230.62 90.396 230.62 58.226S256.676 0 288.846 0s58.227 26.056 58.227 58.226m-22.562 0c0-19.651-16.012-35.663-35.664-35.663c-19.65 0-35.663 16.012-35.663 35.663c0 19.652 16.012 35.664 35.663 35.664c19.652 0 35.664-16.012 35.664-35.664"
-                  />
-                </svg>
-              </span>
-              , depending on availability.
+              I offer sessions online and face-to-face in Highcliffe or Southampton. I cover surrounding areas such as Lymington, New Milton, Christchurch, Southbourne and Bournemouth.
             </p>
-            <p className="text-sm font-trirong_light">Monday - Friday</p>
-
-            <p className="text-sm font-trirong_light">Saturday mornings</p>
+            <p className="text-sm font-trirong_light">Monday - Saturday</p>
             <p className="text-sm font-trirong_light">
               Evening appointments available
             </p>
@@ -353,7 +338,7 @@ function App() {
                 Sessions will then take place, on a weekly basis initially. You
                 might then choose to progress to fortnightly or monthly
                 sessions, at a later date. Each session is 50 minutes long, at a
-                cost of £50.
+                cost of £60.
               </p>
               <p className="text-sm font-trirong_light">
                 I can offer single-session counselling for £70 for 60 minutes.
@@ -370,7 +355,7 @@ function App() {
               </h1>
               <p className="text-sm font-trirong_light">
                 Couples counselling will also take place on a weekly basis, at a
-                cost of £70 for 60 minutes.
+                cost of £90 for 60 minutes.
               </p>
             </div>
           </div>
@@ -402,11 +387,21 @@ function App() {
       </div>
       <Contact />
       <div className="flex flex-col items-center h-60 p-6 md:p-10 justify-center">
-        <div className="flex flex-col text-center space-y-4">
+        <div className="flex flex-col text-center space-y-4 items-center">
           <h1 className="text-xl  font-trirong_reg">New Dawn Counselling</h1>
           <span className="font-trirong_light">
             newdawncounselling.info@gmail.com
           </span>
+          <a
+            href="https://www.facebook.com/profile.php?id=61579957202257"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#4267B2">
+              <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
