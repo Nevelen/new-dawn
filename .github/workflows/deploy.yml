@@ -25,6 +25,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          REACT_APP_RECIPIENT: ${{ vars.REACT_APP_RECIPIENT }}
+          REACT_APP_SENDER: ${{ vars.REACT_APP_SENDER }}
+          REACT_APP_TURNSTILE_SITE_KEY: ${{ vars.REACT_APP_TURNSTILE_SITE_KEY }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
